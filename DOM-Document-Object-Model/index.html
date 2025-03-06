@@ -3,13 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document Object Model</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    <script src="dom.js"></script>
+    <h1>This is a comment box!</h1>
+    <section>
+      <h3>Post your comments</h3>
+      <div id="comment-container">
+        <p class="comment">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
+          ut ullam quas pariatur voluptatem maiores nihil error maxime incidunt
+          autem fugiat, ratione quisquam aut voluptates sit quod odit fugit
+          iusto.
+        </p>
+
+        <p class="comment">
+          Quo perferendis laborum fugiat illum quasi et, voluptatibus
+          dignissimos voluptate iste, officia quas optio ratione eos a magnam
+          ducimus, quisquam delectus labore placeat facilis adipisci! Quaerat
+          eum ex corrupti laborum?
+        </p>
+
+        <p class="comment">
+          Voluptatum alias eveniet blanditiis magni voluptates sed incidunt
+          dolore harum! Et ab voluptate beatae est nulla incidunt reprehenderit.
+          Porro labore molestiae exercitationem obcaecati praesentium enim quasi
+          aut tempora animi eaque?
+        </p>
+      </div>
+      <textarea name="" id="text-comment" cols="50" rows="5"></textarea>
+      <br />
+      <button id="btn-comment">Post Comment</button>
+    </section>
+
+    <br />
+    <br />
+    <br />
+    <button id="btn-theme">Dark/Light</button>
+
+    <br />
+    <br />
+    <input type="text" id="text-input" placeholder="please write delete" />
+    <button id="btn-delete" disabled>Delete</button>
+
+    <script>
+      // set the event handler to the button
+      document
+        .getElementById("btn-comment")
+        .addEventListener("click", function () {
+          const textComment = document.getElementById("text-comment");
+          newComment = textComment.value;
+
+          // convert comment to a paragraph with class name 'comment'
+          const commentElement = document.createElement("p");
+          commentElement.classList.add("comment");
+          commentElement.innerText = newComment;
+
+          // add the new comment paragraph to the container
+          const commentContainer = document.getElementById("comment-container");
+          commentContainer.appendChild(commentElement);
+
+          // clear text area
+          textComment.value = "";
+        });
+
+      document
+        .getElementById("btn-theme")
+        .addEventListener("mousemove", function () {
+          console.log("this is showing");
+        });
+
+      document
+        .getElementById("text-input")
+        .addEventListener("keyup", function () {
+          const textInput = document.getElementById("text-input");
+          const btnDelete = document.getElementById("btn-delete");
+
+          // textConfirm = textInput.value;
+          textConfirm = event.target.value;
+
+          if (textConfirm === "delete") {
+            btnDelete.removeAttribute("disabled");
+          } else {
+            btnDelete.setAttribute("disabled", true);
+          }
+        });
+    </script>
   </body>
 </html>
